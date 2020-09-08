@@ -1,0 +1,80 @@
+﻿@model ItemGUI.ViewModels.CreateItemViewModel
+@{
+    ViewData["Title"] = "CreateItem";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h1>Add new Item</h1>
+<form asp-controller="Home" asp-action="CreateItem" method="post">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Title">Title:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Title" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Description">Description:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Description" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Price">Price:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Price" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Color">Color:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Color" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Weight">Weight:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Weight" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Item.Size">Size:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Item.Size" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="CategorySelectListItems">Categories:</label>
+            </div>
+            <div class="col-sm-3">
+                <select asp-for="CategoryIds" multiple asp-items="@Model.CategorySelectListItems"
+                        style="min-height:200px;"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="ManufacturerSelectListItems">Manufacturers:</label>
+            </div>
+            <div class="col-sm-3">
+                <select asp-for="ManufacturerIds" multiple asp-items="@Model.ManufacturerSelectListItems"
+                        style="min-height:200px;"></select>
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="Create Item" class="btn btn-sm btn-primary" />
+    </div>
+</form>
+
+

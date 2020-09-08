@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ItemGUI.ViewModels.ItemCategoriesManufacturersViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h4>@ViewBag.Message</h4>
+<div>
+    <h1>Все товары</h1>
+    <table class="table">
+        <tr>
+            <th>Наименование товара</th>
+            <th>Категории</th>
+            <th>Производители</th>
+            <th></th>
+
+        </tr>
+
+        @foreach (var holder in Model)
+        {
+            <tr>
+                <td>@holder.Item.Title</td>
+
+                <td>
+                    @{
+                        foreach(var category in holder.Categories)
+                        {
+                            @category.Name <a asp-controller="Categories" asp-action="GetCategoryById"
+                                              asp-route-categoryId="@category.Id">Детали</a><br />
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        foreach(var manufacturer in holder.Manufacturers)
+                        {
+                            @manufacturer.Name <a asp-controller="Manufacturers" asp-action="GetManufacturerById"
+                                                  asp-route-manufacturerId="@manufacturer.Id">Детали</a><br />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="GetItemById"
+                       asp-route-itemId="@holder.Item.Id">Детали товара</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

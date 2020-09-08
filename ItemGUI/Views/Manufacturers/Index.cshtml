@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ItemApiProject.Dtos.ManufacturerDto>
+@{  
+    ViewData["Title"] = "Index";
+}
+
+<h2>@ViewBag.Message</h2>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div>
+    <h2>Лист Производителя</h2>
+    <br />
+
+    @foreach (var item in Model)
+    {
+        <p>
+            <strong>@item.Name</strong>
+            <a asp-controller="Manufacturers" asp-action="GetManufacturerById" asp-route-manufacturerId="@item.Id"> | Детали</a>
+            <a asp-controller="Manufacturers" asp-action="DeleteManufacturer" asp-route-manufacturerId="@item.Id"> | Удалить Производителя</a>
+        </p>
+    }
+</div>

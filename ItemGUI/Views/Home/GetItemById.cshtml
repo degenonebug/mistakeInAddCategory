@@ -1,0 +1,75 @@
+﻿@model ItemGUI.ViewModels.CompleteItemViewModel
+@{
+    ViewData["Title"] = "GetItemById";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h3>@ViewBag.ItemMessage</h3>
+<h3 class="text-success">@ViewBag.SuccessMessage</h3>
+<div>
+    <h2>Детали Товара</h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>Наименование товара:</th>
+            <td>@Model.Item.Title</td>
+        </tr>
+        <tr>
+            <th>Описание:</th>
+            <td>@Model.Item.Description</td>
+        </tr>
+        <tr>
+            <th>Цена:</th>
+            <td>@Model.Item.Price</td>
+        </tr>
+        <tr>
+            <th>Цвет:</th>
+            <td>@Model.Item.Color</td>
+        </tr> 
+        <tr>
+            <th>Вес:</th>
+            <td>@Model.Item.Weight</td>
+        </tr>
+        <tr>
+            <th>Размер:</th>
+            <td>@Model.Item.Size</td>
+        </tr>
+        <tr>
+            <th>Категории:</th>
+            <td>
+                @foreach (var category in Model.Categories)
+                {
+                    @category.Name <a asp-controller="Categories" asp-action="GetCategoryById"
+                                      asp-route-categoryId="@category.Id">Детали</a><br />
+
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <th>Производитель(и):</th>
+            <td>
+                @foreach (var manufacturer in Model.Manufacturers)
+                {
+                    @manufacturer.Name <a asp-controller="Manufacturers" asp-action="GetManufacturerById"
+                                          asp-route-manufacturerId="@manufacturer.Id">Детали</a><br />
+
+                }
+
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="form-group text-center">
+        <a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="DeleteItem"
+           asp-route-itemId="@Model.Item.Id">Удалить товар</a>
+
+    </div>
+    
+</div>
+
+
+@*public string Description { get; set; }
+        public double Price { get; set; }
+        public string Color { get; set; }
+        public double Weight { get; set; }
+        public double Size { get; set; }*@
